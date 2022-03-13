@@ -1,4 +1,4 @@
-package harbour
+package mattermost
 
 type Reader interface {
 	UserIterator() (UserIterator, error)

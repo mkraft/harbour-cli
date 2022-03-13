@@ -3,14 +3,14 @@ package main
 import (
 	"log"
 
-	"github.com/mkraft/harbour"
+	"github.com/mkraft/mattermost"
 	"github.com/mkraft/mattermostjsonl"
 	"github.com/mkraft/slackexport"
 )
 
 func main() {
-	var importer harbour.Reader
-	var exporter harbour.Writer
+	var importer mattermost.Reader
+	var exporter mattermost.Writer
 
 	// based on some input we select a concreate reader and writer
 	importer = &slackexport.Reader{}

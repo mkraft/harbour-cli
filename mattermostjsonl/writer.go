@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/mkraft/harbour"
+	"github.com/mkraft/mattermost"
 )
 
 type Writer struct{}
 
-func (m *Writer) WriteUser(user *harbour.User) error {
+func (m *Writer) WriteUser(user *mattermost.User) error {
 	data, err := json.Marshal(user)
 	if err != nil {
 		log.Println(err)
@@ -19,7 +19,7 @@ func (m *Writer) WriteUser(user *harbour.User) error {
 	return nil
 }
 
-func (m *Writer) WriteGroup(group *harbour.Group) error {
+func (m *Writer) WriteGroup(group *mattermost.Group) error {
 	data, err := json.Marshal(group)
 	if err != nil {
 		log.Println(err)

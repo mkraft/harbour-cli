@@ -1,10 +1,10 @@
 package slackexport
 
-import "github.com/mkraft/harbour"
+import "github.com/mkraft/mattermost"
 
 type userIterator struct {
 	index int
-	users []*harbour.User
+	users []*mattermost.User
 }
 
 func (u *userIterator) HasNext() bool {
@@ -14,7 +14,7 @@ func (u *userIterator) HasNext() bool {
 	return false
 }
 
-func (u *userIterator) Next() (*harbour.User, error) {
+func (u *userIterator) Next() (*mattermost.User, error) {
 	if u.HasNext() {
 		user := u.users[u.index]
 		u.index++
@@ -25,7 +25,7 @@ func (u *userIterator) Next() (*harbour.User, error) {
 
 type groupIterator struct {
 	index  int
-	groups []*harbour.Group
+	groups []*mattermost.Group
 }
 
 func (u *groupIterator) HasNext() bool {
@@ -35,7 +35,7 @@ func (u *groupIterator) HasNext() bool {
 	return false
 }
 
-func (u *groupIterator) Next() (*harbour.Group, error) {
+func (u *groupIterator) Next() (*mattermost.Group, error) {
 	if u.HasNext() {
 		group := u.groups[u.index]
 		u.index++

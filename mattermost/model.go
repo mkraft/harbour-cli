@@ -1,4 +1,4 @@
-package harbour
+package mattermost
 
 type User struct {
 	Username string

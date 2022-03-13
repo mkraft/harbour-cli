@@ -1,26 +1,28 @@
 package slackexport
 
-import "github.com/mkraft/harbour"
+import "github.com/mkraft/mattermost"
 
 type Reader struct{}
 
-func (s *Reader) UserIterator() (harbour.UserIterator, error) {
+func (s *Reader) UserIterator() (mattermost.UserIterator, error) {
+	// do some work to retrieve this list of users from the slack export
 	fakeUserIterator := &userIterator{
 		index: 0,
-		users: []*harbour.User{
-			&harbour.User{Username: "fake.user1"},
-			&harbour.User{Username: "fake.user2"},
+		users: []*mattermost.User{
+			{Username: "fake.user1"},
+			{Username: "fake.user2"},
 		},
 	}
 	return fakeUserIterator, nil
 }
 
-func (s *Reader) GroupIterator() (harbour.GroupIterator, error) {
+func (s *Reader) GroupIterator() (mattermost.GroupIterator, error) {
+	// do some work to retrieve this list of groups from the slack export
 	fakeGroupIterator := &groupIterator{
 		index: 0,
-		groups: []*harbour.Group{
-			&harbour.Group{Name: "fake-group1"},
-			&harbour.Group{Name: "fake-group2"},
+		groups: []*mattermost.Group{
+			{Name: "fake-group1"},
+			{Name: "fake-group2"},
 		},
 	}
 	return fakeGroupIterator, nil

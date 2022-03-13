@@ -1,4 +1,4 @@
-package harbour
+package mattermost
 
 type Writer interface {
 	WriteUser(*User) error

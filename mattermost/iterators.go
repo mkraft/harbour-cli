@@ -1,4 +1,4 @@
-package harbour
+package mattermost
 
 type UserIterator interface {
 	HasNext() bool
