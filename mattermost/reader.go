@@ -1,6 +1,6 @@
 package mattermost
 
 type Reader interface {
-	UserIterator() (UserIterator, error)
-	GroupIterator() (GroupIterator, error)
+	Users() chan *User
+	Groups() chan *Group
 }

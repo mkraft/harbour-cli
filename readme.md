@@ -38,36 +38,6 @@ $ go run main.go
 {"Name":"fake-group2"}
 ```
 
-## Interfaces
-
-```go
-package mattermost
-
-type Reader interface {
-	UserIterator() (UserIterator, error)
-	GroupIterator() (GroupIterator, error)
-    // etc...
-}
-
-type Writer interface {
-	WriteUser(*User) error
-	WriteGroup(*Group) error
-    // etc...
-}
-
-type UserIterator interface {
-	HasNext() bool
-	Next() (*User, error)
-}
-
-type GroupIterator interface {
-	HasNext() bool
-	Next() (*Group, error)
-}
-
-// etc...
-```
-
 ## Advanced discussion
 
 1. Perhaps a dependency graph—where each vertex represents a "depends upon" relation—can be used to determined the order of the write operations and required validations (not included in the sample code).
@@ -83,5 +53,3 @@ graph
     Channel --> Team
     Team --> User
 ```
-
-2. Iterators in Go can be done nicely with goroutines, so that's another option.
