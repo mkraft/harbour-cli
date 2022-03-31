@@ -1,8 +1,10 @@
 package main
 
 import (
+	"context"
 	"log"
 	"sync"
+	"time"
 
 	"github.com/mkraft/mattermost"
 	"github.com/mkraft/mattermostjsonl"
@@ -21,8 +23,15 @@ func main() {
 	var wg sync.WaitGroup
 	wg.Add(2)
 
+	ctx, cancel := context.WithCancel(context.Background())
+
 	go func() {
-		for result := range importer.Users() {
+		time.Sleep(4 * time.Second) // fake triggering a cancellation
+		cancel()
+	}()
+
+	go func() {
+		for result := range importer.Users(ctx) {
 			if result.Err != nil {
 				log.Println(result.Err)
 				continue
@@ -36,7 +45,7 @@ func main() {
 	}()
 
 	go func() {
-		for result := range importer.Groups() {
+		for result := range importer.Groups(ctx) {
 			if result.Err != nil {
 				log.Println(result.Err)
 			}

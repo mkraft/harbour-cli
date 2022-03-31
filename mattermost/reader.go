@@ -1,8 +1,10 @@
 package mattermost
 
+import "context"
+
 type Reader interface {
-	Users() chan *Result[*User]
-	Groups() chan *Result[*Group]
+	Users(ctx context.Context) chan *Result[*User]
+	Groups(ctx context.Context) chan *Result[*Group]
 }
 
 type ResultVal interface {
