@@ -27,7 +27,7 @@ func main() {
 				log.Println(result.Err)
 				continue
 			}
-			err := exporter.WriteUser(result.User)
+			err := exporter.WriteUser(result.Val)
 			if err != nil {
 				log.Println(err)
 			}
@@ -40,7 +40,7 @@ func main() {
 			if result.Err != nil {
 				log.Println(result.Err)
 			}
-			err := exporter.WriteGroup(result.Group)
+			err := exporter.WriteGroup(result.Val)
 			if err != nil {
 				log.Println(err)
 			}
