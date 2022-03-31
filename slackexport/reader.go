@@ -4,32 +4,32 @@ import "github.com/mkraft/mattermost"
 
 type Reader struct{}
 
-func (s *Reader) Users() chan *mattermost.User {
-	users := make(chan *mattermost.User)
+func (s *Reader) Users() chan *mattermost.UserResult {
+	results := make(chan *mattermost.UserResult)
 	go func() {
 		// do some work to retrieve this list of users from the slack export
 		for _, user := range []*mattermost.User{
 			{Username: "fake.user1"},
 			{Username: "fake.user2"},
 		} {
-			users <- user
+			results <- &mattermost.UserResult{User: user}
 		}
-		close(users)
+		close(results)
 	}()
-	return users
+	return results
 }
 
-func (s *Reader) Groups() chan *mattermost.Group {
-	groups := make(chan *mattermost.Group)
+func (s *Reader) Groups() chan *mattermost.GroupResult {
+	results := make(chan *mattermost.GroupResult)
 	go func() {
 		// do some work to retrieve this list of groups from the slack export
 		for _, group := range []*mattermost.Group{
 			{Name: "fake-group1"},
 			{Name: "fake-group2"},
 		} {
-			groups <- group
+			results <- &mattermost.GroupResult{Group: group}
 		}
-		close(groups)
+		close(results)
 	}()
-	return groups
+	return results
 }

@@ -1,6 +1,16 @@
 package mattermost
 
+type UserResult struct {
+	User *User
+	Err  error
+}
+
+type GroupResult struct {
+	Group *Group
+	Err   error
+}
+
 type Reader interface {
-	Users() chan *User
-	Groups() chan *Group
+	Users() chan *UserResult
+	Groups() chan *GroupResult
 }

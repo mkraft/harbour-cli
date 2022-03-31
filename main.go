@@ -22,8 +22,12 @@ func main() {
 	wg.Add(2)
 
 	go func() {
-		for user := range importer.Users() {
-			err := exporter.WriteUser(user)
+		for result := range importer.Users() {
+			if result.Err != nil {
+				log.Println(result.Err)
+				continue
+			}
+			err := exporter.WriteUser(result.User)
 			if err != nil {
 				log.Println(err)
 			}
@@ -32,8 +36,11 @@ func main() {
 	}()
 
 	go func() {
-		for group := range importer.Groups() {
-			err := exporter.WriteGroup(group)
+		for result := range importer.Groups() {
+			if result.Err != nil {
+				log.Println(result.Err)
+			}
+			err := exporter.WriteGroup(result.Group)
 			if err != nil {
 				log.Println(err)
 			}
