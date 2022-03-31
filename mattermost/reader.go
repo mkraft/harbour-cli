@@ -5,7 +5,11 @@ type Reader interface {
 	Groups() chan *Result[*Group]
 }
 
-type Result[T any] struct {
+type ResultVal interface {
+	*User | *Group
+}
+
+type Result[T ResultVal] struct {
 	Val T
 	Err error
 }
