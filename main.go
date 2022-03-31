@@ -13,7 +13,8 @@ func main() {
 	var importer mattermost.Reader
 	var exporter mattermost.Writer
 
-	// based on some input we select a concreate reader and writer
+	// based on some input we select a concreate reader and writer, for example
+	// go run . -from slackexport -to mattermostjsonl
 	importer = &slackexport.Reader{}
 	exporter = &mattermostjsonl.Writer{}
 
@@ -39,6 +40,8 @@ func main() {
 		}
 		wg.Done()
 	}()
+
+	// Add more types as per the reader/writer interfaces
 
 	wg.Wait()
 }
