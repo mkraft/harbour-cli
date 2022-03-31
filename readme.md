@@ -36,6 +36,7 @@ $ go run .
 {"Username":"fake.user1"}
 {"Username":"fake.user2"}
 {"Name":"fake-group2"}
+```
 
 ## Advanced discussion
 
