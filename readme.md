@@ -33,11 +33,9 @@ flowchart RL
 ```shell
 $ go run .
 {"Name":"fake-group1"}
-{"Name":"fake-group2"}
 {"Username":"fake.user1"}
 {"Username":"fake.user2"}
-2022/03/31 13:16:41 groups done
-2022/03/31 13:16:41 users done
+{"Name":"fake-group2"}
 
 ## Advanced discussion
 
