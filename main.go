@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"sync"
 
 	"github.com/mkraft/mattermost"
 	"github.com/mkraft/mattermostjsonl"
@@ -16,17 +17,28 @@ func main() {
 	importer = &slackexport.Reader{}
 	exporter = &mattermostjsonl.Writer{}
 
-	for user := range importer.Users() {
-		err := exporter.WriteUser(user)
-		if err != nil {
-			log.Println(err)
-		}
-	}
+	var wg sync.WaitGroup
+	wg.Add(2)
 
-	for group := range importer.Groups() {
-		err := exporter.WriteGroup(group)
-		if err != nil {
-			log.Println(err)
+	go func() {
+		for user := range importer.Users() {
+			err := exporter.WriteUser(user)
+			if err != nil {
+				log.Println(err)
+			}
 		}
-	}
+		wg.Done()
+	}()
+
+	go func() {
+		for group := range importer.Groups() {
+			err := exporter.WriteGroup(group)
+			if err != nil {
+				log.Println(err)
+			}
+		}
+		wg.Done()
+	}()
+
+	wg.Wait()
 }
