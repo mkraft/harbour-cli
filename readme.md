@@ -41,7 +41,7 @@ $ go run .
 
 ## Advanced discussion
 
-Perhaps a dependency graph—where each vertex represents a "depends upon" relation—can be used to determined the order of the write operations and required validations (not included in the sample code).
+1. Perhaps a dependency graph—where each vertex represents a "depends upon" relation—can be used to determined the order of the write operations and required validations (not included in the sample code).
 
 ```mermaid
 graph

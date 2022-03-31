@@ -22,43 +22,30 @@ func main() {
 	wg.Add(2)
 
 	go func() {
-		done := make(chan bool)
-		users, errors := importer.Users(done)
-		for {
-			select {
-			case user := <-users:
-				err := exporter.WriteUser(user)
-				if err != nil {
-					log.Println(err)
-				}
-			case err := <-errors:
+		for result := range importer.Users() {
+			if result.Err != nil {
+				log.Println(result.Err)
+				continue
+			}
+			err := exporter.WriteUser(result.User)
+			if err != nil {
 				log.Println(err)
-			case <-done:
-				log.Println("users done")
-				wg.Done()
-				return
 			}
 		}
+		wg.Done()
 	}()
 
 	go func() {
-		done := make(chan bool)
-		groups, errors := importer.Groups(done)
-		for {
-			select {
-			case group := <-groups:
-				err := exporter.WriteGroup(group)
-				if err != nil {
-					log.Println(err)
-				}
-			case err := <-errors:
+		for result := range importer.Groups() {
+			if result.Err != nil {
+				log.Println(result.Err)
+			}
+			err := exporter.WriteGroup(result.Group)
+			if err != nil {
 				log.Println(err)
-			case <-done:
-				log.Println("groups done")
-				wg.Done()
-				return
 			}
 		}
+		wg.Done()
 	}()
 
 	// Add more types as per the reader/writer interfaces
