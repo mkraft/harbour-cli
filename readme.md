@@ -1,5 +1,7 @@
 # Import/export Architecture
 
+Harbour coordinates imports and exports.
+
 ## Overview
 
 ```mermaid
