@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/mkraft/mattermost"
+	"example.com/mattermost"
 )
 
 type Writer struct{}

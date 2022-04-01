@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/mkraft/mattermost"
+	"example.com/mattermost"
 )
 
 type Reader struct{}

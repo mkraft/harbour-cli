@@ -6,9 +6,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/mkraft/mattermost"
-	"github.com/mkraft/mattermostjsonl"
-	"github.com/mkraft/slackexport"
+	"example.com/mattermost"
+	"example.com/mattermostjsonl"
+	"example.com/slackexport"
 )
 
 func main() {

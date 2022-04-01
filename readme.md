@@ -31,7 +31,7 @@ flowchart RL
 ## Usage
 
 ```shell
-$ go run .
+$ go run ./coordinator
 {"Name":"fake-group1"}
 {"Username":"fake.user1"}
 {"Username":"fake.user2"}

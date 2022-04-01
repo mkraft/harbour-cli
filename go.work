@@ -1,0 +1,6 @@
+go 1.18
+
+use ./coordinator
+use ./mattermost
+use ./slackexport
+use ./mattermostjsonl
