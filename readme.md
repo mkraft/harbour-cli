@@ -22,11 +22,10 @@ flowchart RL
 
 ## Sample code
 
-* [`harbour-cli` is a fake CLI application](https://github.com/mkraft/harbour-cli/blob/main/main.go)
-* Pretend the following go modules live in their own repositrories:
-    * [`slackexport` is an example `Reader` library](https://github.com/mkraft/harbour-cli/tree/main/slackexport)
-    * [`mattermostjsonl` is an example `Writer` library](https://github.com/mkraft/harbour-cli/tree/main/mattermostjsonl)
-* [`mattermost`](https://github.com/mkraft/harbour-cli/tree/main/mattermost) is an example module representing the interfaces and models that the `Reader` and `Writer` libraries have knowledge of. That module could exist or it could just be part of the mattermost server repository.
+* `coordinator` is a fake CLI application
+* `slackexport` is an example `Reader` module
+* `mattermostjsonl` is an example `Writer` module
+* `mattermost` is an example module representing the interfaces and models that the `Reader` and `Writer` libraries have knowledge of. It would probably just live in Mattermost so that the versioning is coordinated.
 
 ## Usage
 
