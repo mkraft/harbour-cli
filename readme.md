@@ -18,7 +18,7 @@ flowchart RL
 * A reader (ex `SlackExport.Reader`) reads from the Slack export format implementing the `Reader` interface.
 * A writer (ex `MattermostJSONL.Writer`) writes to the Mattermermost JSONL format implementing the `Writer` interface.
 * The CLI imports the various go modules (which would likely live in their own repositories) and instantiates the appropriate concrete implementation based on the client input.
-* The client coult import into or export out of Mattermost, the architecture supports both.
+* The client could import into or export out of Mattermost, the architecture supports both.
 
 ## Sample code
 
@@ -38,9 +38,9 @@ $ go run ./coordinator
 {"Name":"fake-group2"}
 ```
 
-## Advanced discussion
+## Advanced
 
-1. Perhaps a dependency graph—where each vertex represents a "depends upon" relation—can be used to determined the order of the write operations and required validations (not included in the sample code).
+A dependency graph—where each vertex represents a "depends upon" relation—can be used to determined the order of the write operations and required validations (not included in the sample code).
 
 ```mermaid
 graph
